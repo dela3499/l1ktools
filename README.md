@@ -48,7 +48,7 @@ text report of the statistics of the detected peaks (A10_pkstats.txt).
 
 #### Requirements:
 
-1. R versions 2.9 and above
+1. R versions 3.1 and above
 2. prada package: http://www.bioconductor.org/packages/devel/bioc/html/prada.html
 3. rhdf5 package: http://bioconductor.org/packages/release/bioc/html/rhdf5.html
 
