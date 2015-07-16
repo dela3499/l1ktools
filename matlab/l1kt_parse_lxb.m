@@ -8,10 +8,13 @@ function s = l1kt_parse_lxb(fname, varargin)
 %
 if isfileexist(fname)
     tmp = which(mfilename);
+    % disp(tmp);
     p = fileparts(tmp);
+    % disp(p);
     lxbutil_cp = fullfile(p, 'lib/lxb-util.jar');
+    disp(lxbutil_cp);
     dp = javaclasspath;
-    if isempty(strcmp(lxbutil_cp, dp))
+    if ~strcmp(lxbutil_cp, dp)
         fprintf('Adding lxb-util.jar to classpath\n');
         javaaddpath(lxbutil_cp)
     end
