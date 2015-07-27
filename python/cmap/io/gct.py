@@ -422,8 +422,11 @@ class GCT(object):
                     self.matrix = self.matrix_node[:,row_inds]
                     self.matrix = self.matrix[col_inds,:]
         # make sure the data is in the right order given the col_inds and row_inds
-        self.matrix = self.matrix[col_inds.sort(),:]
-        self.matrix = self.matrix[:,row_inds.sort()]
+        # copy row/col inds so that when sorting the original order is preserved
+        col_inds_copy = numpy.copy(col_inds)
+        row_inds_copy = numpy.copy(row_inds)
+        self.matrix = self.matrix[col_inds_copy.sort(),:]
+        self.matrix = self.matrix[:,row_inds_copy.sort()]
         self.matrix =  numpy.reshape(self.matrix,(len(col_inds),len(row_inds)))
         self.matrix = self.matrix.transpose()
         # convert data to double precision of called for
