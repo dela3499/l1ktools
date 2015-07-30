@@ -118,6 +118,16 @@ Below are summarized the tools available to perform so common data analysis task
 * **MATLAB**: To read an .lxb into the MATLAB workspace, use the [l1kt_parse_lxb](https://github.com/cmap/l1ktools/blob/master/matlab/l1kt_parse_lxb.m) function.
 * **R**: To convert an .lxb file to text, use the [R/cmap/lxb2txt.sh](https://github.com/cmap/l1ktools/blob/master/R/cmap/lxb2txt.sh) script.
 
+### Running the standard CMap data processing pipeline, aka 'roast'
+* use the matlab script `l1kt_roast.m`
+
+```
+% add appropriate paths to matlab environment 
+addpath(genpath('l1ktools/matlab'))
+addpath(genpath('l1ktools/matlab/lib'))
+roasted_plate = l1kt_roast('plate', '<name_of_plate>', 'plate_path', '</path/to/output>', 'raw_path', '</path/to/lxb/directory>', 'map_path', '</path/to/map/directory>');
+
+```
 
 ## The LINCS API
 
