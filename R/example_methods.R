@@ -7,7 +7,7 @@ source("cmap/io.R")
 
 
 # initialize a GCT object with a single signature
-ds <- parse.gctx("/xchip/cogs/data/build/a2y13q1/modzs.gctx", cid="CPC005_A375_6H:BRD-A85280935-003-01-7:10")
+ds <- parse.gctx("/cmap/data/build/a2y13q1/modzs.gctx", cid="CPC005_A375_6H:BRD-A85280935-003-01-7:10")
 
 
 # make a call to the CLUE API
