@@ -122,7 +122,8 @@ Below are summarized the tools available to perform so common data analysis task
 * use the matlab script `l1kt_roast.m`
 
 ```
-% add appropriate paths to matlab environment 
+% add appropriate paths to matlab environment
+addpath(genpath('l1ktools/data')) 
 addpath(genpath('l1ktools/matlab'))
 addpath(genpath('l1ktools/matlab/lib'))
 roasted_plate = l1kt_roast('plate', '<name_of_plate>', 'plate_path', '</path/to/output>', 'raw_path', '</path/to/lxb/directory>', 'map_path', '</path/to/map/directory>');
