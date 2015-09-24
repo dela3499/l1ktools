@@ -107,6 +107,23 @@ subset_to_ids <- function(df, ids) {
   return(newdf)
 }
 
+
+check_colnames <- function(test_names, df, throw_error=T) {
+  # check whether test_names are valid names in df
+  # throw error if specified
+  diffs <- setdiff(test_names, names(df))
+  if (length(diffs) > 0) {
+    if (throw_error) {
+      stop(paste("the following column names are not found in", deparse(substitute(df)), ":",
+        paste(diffs, collapse=" "), "\n"))
+    } else {
+      return(F)
+    }
+  } else {
+    return(T)
+  }
+}
+
 # define the initialization method for the class
 setMethod("initialize",
           signature = "GCT",
