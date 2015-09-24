@@ -99,6 +99,14 @@ read.gctx.ids <- function(gctx_path, dimension="row") {
 }
 
 
+subset_to_ids <- function(df, ids) {
+  # helper function to do a robust df subset
+  check_colnames("id", df)
+  newdf <- data.frame(df[match(ids, df$id), ])
+  names(newdf) <- names(df)
+  return(newdf)
+}
+
 # define the initialization method for the class
 setMethod("initialize",
           signature = "GCT",
