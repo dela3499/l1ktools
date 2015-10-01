@@ -1,3 +1,5 @@
 java/*.class
 java/**/*.class
 java/out/**
+python/*.pyc
+python/**/*.pyc
