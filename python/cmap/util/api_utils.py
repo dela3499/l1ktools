@@ -316,15 +316,15 @@ class CMapAPI(object):
 			return res
 		# if not, see if there's just one field
 		else:
-			# if just one field, first check if any of the returned documents are None, 
-			# meaning they didn't contain the one requested field
-			if len(query_args['fields']) == 1:
-				if any([not(x) for x in res]):
-					res = [x for x in res if x]
-					if self.verbose:
-						print 'only {0} documents contained the one requested field'.format(len(res))
 			# Check that all requested fields were found
 			if query_args['fields'] is not None:
+				# if just one field, first check if any of the returned documents are None,
+				# meaning they didn't contain the one requested field
+				if len(query_args['fields']) == 1:
+					if any([not(x) for x in res]):
+						res = [x for x in res if x]
+						if self.verbose:
+							print 'only {0} documents contained the one requested field'.format(len(res))
 				missings = self._check_fields(res, query_args['fields'])
 				# if single field, output list / series
 				if (len(query_args['fields']) == 1) and (not missings):
