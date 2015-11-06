@@ -14,7 +14,7 @@ pnames = {'allfields','analyte_idx'};
 dflts = {false, '0:500'};
 arg = parse_args(pnames, dflts, varargin{:});
 
-gene_classpath = mapdir(fullfile(mortarpath,'ext/jars/GENE-E.jar'));
+gene_classpath = mapdir(fullfile(mortarpath,'lib/GENE-E.jar'));
 dp = javaclasspath;
 
 if ~any(strcmp(gene_classpath, dp))

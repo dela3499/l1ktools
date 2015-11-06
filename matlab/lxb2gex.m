@@ -28,7 +28,7 @@ function [pkstats, assign] = lxb2gex(plate_name, plate_path)
 	% end % end peak detection
 	% detect peaks for all LXBs
 	[pkstats, fn] = detect_lxb_peaks_folder(fullfile(plate_path, plate_name), ...
-		'parallel', false);
+		'parallel', true);
 	% and assign them
 	assign = assign_lxb_peaks(pkstats);
 
