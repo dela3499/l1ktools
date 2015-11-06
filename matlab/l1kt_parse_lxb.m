@@ -12,7 +12,7 @@ if isfileexist(fname)
     p = fileparts(tmp);
     % disp(p);
     lxbutil_cp = fullfile(p, 'lib/lxb-util.jar');
-    disp(lxbutil_cp);
+    % disp(lxbutil_cp);
     dp = javaclasspath;
     if ~strcmp(lxbutil_cp, dp)
         fprintf('Adding lxb-util.jar to classpath\n');

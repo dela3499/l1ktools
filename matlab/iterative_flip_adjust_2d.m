@@ -1,8 +1,5 @@
 function [adjds, flipstats, prpt] = iterative_flip_adjust_2d(ds, cnt, varargin)
 % ITERATIVE_FLIP_ADJUST_2D Flip detection and corrrection.
-% ADJDS = ITERATIVE_FLIP_ADJUST_2D(DS, CNT) Apply flip correction
-% to raw dpeak expression data DS and bead count statistics CNT and 
-% return adjusted datamatrix ADJDS.
 
 pname = {'maxiter', 'flip_cutoff', 'flip_method','flip_freq', 'not_duo', 'debug'};
 dflts = {10, 0.4, 'linear', 3, 0, false};

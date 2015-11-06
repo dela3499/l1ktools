@@ -8,5 +8,5 @@ addpath(genpath('lib'))
 javaaddpath('lib/lxb-util.jar')
 
 % set up path for mortar
-global mortarpath;
-mortarpath = '.';
+% global MORTARPATH;
+MORTARPATH = '.';
