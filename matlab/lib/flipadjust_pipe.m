@@ -1,4 +1,4 @@
-function flipadjust_pipe(varargin)
+function combods = flipadjust_pipe(varargin)
 % FLIPADJUST_PIPE: Apply plate-level flip correction.
 
 % Inputs:
@@ -38,9 +38,9 @@ for pn=1:nplate
     % Applies only to DUO
     if isequal(plateinfo.detmode, 'duo')
         % check if combo GEX file exists
-        d = dir(fullfile(plateinfo.plate_path, sprintf('%s_GEX_*.gct',...
+        gex_path = dir(fullfile(plateinfo.plate_path, sprintf('%s_GEX_*.gct',...
             plateinfo.plate)));
-        gexexists = ~isempty(d);        
+        gexexists = ~isempty(gex_path);        
         % Dataset(s)
         dspath = fullfile(plateinfo.plate_path,'dpeak');
         d = dir(fullfile(dspath, sprintf('*_RAW_*.gct')));
@@ -53,6 +53,8 @@ for pn=1:nplate
         end        
         if ~arg.overwrite && gexexists
             fprintf('%s: GEX exists, skipping...\n', plateinfo.plate);
+            % parse and return the existing GEX matrix
+            combods = parse_gct(fullfile(plateinfo.plate_path, gex_path(1).name));
         else
             if rawexists
                 % lockfile = fullfile(plateinfo.plate_path,sprintf('%s.lock',...
