@@ -38,6 +38,7 @@ if ~exist('p','var')||isempty(p)
     error('No plate name specified')
 end
 args = parse_args(pnames, dflts, varargin{:});
+print_args('parse_platename', 1, args);
 
 if (ischar(p) && ~isempty(regexp(p,'.grp$', 'once')))
     p = parse_grp(p);

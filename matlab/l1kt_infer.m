@@ -18,8 +18,12 @@ function infds = l1kt_infer(ds, out, varargin)
 
 % Get optional arguments
 pnames = {'model', 'chip', 'annpath', 'plate'};
-dflts = {'../data/mlr12k_epsilon5253_978.mat', 'HG_U133A', '../data', ''};
+dflts = {...
+	fullfile(mortarpath, 'resources', 'mlr12k_epsilon5253_978.mat'),...
+	 'HG_U133A',...
+	 fullfile(mortarpath, 'resources'), ''};
 args = parse_args(pnames,dflts,varargin{:});
+print_args('l1kt_infer', 1, args)
 
 % perform inference
 infds = infer_tool('res', ds, 'model', args.model, varargin{:});

@@ -22,7 +22,10 @@ dflts = {'../data/log_ybio_epsilon.gct', '../data/epsilon_cal.gmx'};
 args = parse_args(pnames,dflts,varargin{:});
 
 % normalize the data sets
-raw = parse_gct(raw, 'class', 'double');
+if ~isstruct(raw)
+    % parse the file
+    raw = parse_gct(raw, 'class', 'double');
+end
 raw.mat = safe_log2(raw.mat);
 calibds = gen_calib_matrix(args.gmx_cal, raw);
 ref = parse_gct(args.ref, 'class', 'double');

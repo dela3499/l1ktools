@@ -1,12 +1,14 @@
+this_path = strrep(which(mfilename), sprintf('%s%s.m', filesep, mfilename), '');    
+
 % add appropriate paths to matlab environment
-% assumes run from within l1ktools/matlab
-addpath(genpath('../data')) 
-% addpath(genpath('matlab'))
-addpath(genpath('lib'))
+addpath(genpath(fullfile(this_path, '../data'))) 
+addpath(genpath(fullfile(this_path, 'resources'))) 
+addpath(genpath(fullfile(this_path, 'lib')))
+addpath(genpath(fullfile(this_path, 'data_pipeline')))
 
 % add java utils for parsing lxbs
-javaaddpath('lib/lxb-util.jar')
+javaaddpath(fullfile(this_path, 'lib/lxb-util.jar'))
 
 % set up path for mortar
 % global MORTARPATH;
-MORTARPATH = '.';
+MORTARPATH = this_path;
