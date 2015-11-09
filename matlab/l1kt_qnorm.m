@@ -1,10 +1,15 @@
-function qnormds = l1kt_qnorm(ds, out)
+function qnormds = l1kt_qnorm(ds, out, varargin)
 % L1KT_QNORM Perform quantile normalization on .gct data set
 %   QNORMDS = L1KT_QNORM(DS,OUT) takes as input a .gct data structure or
 %   the path to a .gct file. It returns a quantile-normalized .gct data
 %   structure QNORMDS to the MATLAB workspace, and saves the data set to
 %   the directory OUT. It also saves gene expression quantile plots to the
 %   directory OUT.
+
+% Get optional arguments
+pnames = {'plate'};
+dflts = {''};
+args = parse_args(pnames,dflts,varargin{:});
 
 qnormds = parse_gct(ds, 'class', 'double');
 % plot the data set quantiles before qnorming
@@ -14,7 +19,7 @@ qnormds.mat = qnorm(qnormds.mat);
 subplot(2,1,2)
 qtlplot(qnormds.mat, 'post-qnorm')
 print('-dpng', fullfile(out, 'quantile_plots'))
-mkgct(fullfile(out, 'QNORM'), qnormds)
+mkgct(fullfile(out, sprintf('%s_QNORM', args.plate)), qnormds)
 end
 
 function qtlplot(m, ptitle)

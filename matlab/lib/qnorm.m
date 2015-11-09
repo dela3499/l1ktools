@@ -50,7 +50,7 @@ if args.use_sketch
 else   
     % quantile normalization
     dbg(args.verbose, 'Performing quantile normalization')
-    x.mat = quantilenorm(x.mat, 'median', true);
+    x = quantilenorm(x, 'median', true);
 end
 
 end

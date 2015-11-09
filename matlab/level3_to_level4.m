@@ -1,4 +1,4 @@
-function [qnorm_ds, inf_ds] = level2_to_level3(varargin)
+function zs_ds = level3_to_level4(zs_ds, varargin)
 % LEVEL2_TO_LEVEL3 - Given a directory of LXB files (level 1 data), perform
 % peak deconvolution flip adjustment.
 % Return to the workspace a gene expression (GEX, level 2 data)
@@ -18,25 +18,24 @@ function [qnorm_ds, inf_ds] = level2_to_level3(varargin)
 toolname = mfilename;
 fprintf('-[ %s ]- Start\n', upper(toolname));
 % startup_defaults;
-pnames = {'plate', 'overwrite', 'plate_path', 'precision'}; %, ...
+pnames = {'plate', 'overwrite', 'plate_path', 'precision', ...
+	'median_space', 'var_adjustment', 'min_mad'}; %, ...
     % 'flipcorrect', 'parallel', 'randomize',...
     % 'use_smdesc', 'lxbhist_analyte', 'lxbhist_well',...
     % 'detect_param', 'setrnd', 'rndseed', ...
     % 'incomplete_map'};
-dflts = { '', false, '.' 1}; %, ...
+dflts = { '', false, '.' 1, ...
+	[], 'fixed', 0.1}; %, ...
     % true, true, true, ...
     % false, '25,182,286,373,463', 'A05,N13,G17',...
     % fullfile(mortarpath,'resources', 'detect_params.txt'), true, '', ...
     % false};
-arg = parse_args(pnames, dflts, varargin{:});
+args = parse_args(pnames, dflts, varargin{:});
 
-% run LISS
-norm_ds = liss_pipe(varargin{:});
+% do the z-scoring
+zs_ds.mat = robust_zscore(zs_ds.mat, varargin{:});
 
-% and QNORM
-qnorm_ds = l1kt_qnorm(norm_ds, fullfile(arg.plate_path, arg.plate));
-
-% run inference
-inf_ds = l1kt_infer(qnorm_ds, fullfile(arg.plate_path, arg.plate), varargin{:});
+% save the dataset
+mkgct(fullfile(out, sprintf('%s_ZSPCQNORM', args.plate)), zs_ds);
 
 end

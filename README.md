@@ -17,7 +17,7 @@ will update the tools as they become available.
 
 #### Requirements:
 
-1. Matlab R2009a and above
+1. Matlab R2014b and above
 2. Statistics Toolbox
 
 #### Setting the MATLAB path:

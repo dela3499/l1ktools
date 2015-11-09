@@ -17,11 +17,12 @@ function infds = l1kt_infer(ds, out, varargin)
 %                     ../data
 
 % Get optional arguments
-pnames = {'model', 'chip', 'annpath'};
-dflts = {'../data/mlr12k_epsilon5253_978.mat', 'HG_U133A', '../data'};
+pnames = {'model', 'chip', 'annpath', 'plate'};
+dflts = {'../data/mlr12k_epsilon5253_978.mat', 'HG_U133A', '../data', ''};
 args = parse_args(pnames,dflts,varargin{:});
 
 % perform inference
 infds = infer_tool('res', ds, 'model', args.model, varargin{:});
 infds = sort_features(infds);
-mkgct(fullfile(out, 'INF'), infds);
+% save dataset
+mkgct(fullfile(out, sprintf('%s_INF', args.plate)), infds);
