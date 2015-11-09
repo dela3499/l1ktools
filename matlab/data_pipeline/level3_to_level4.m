@@ -33,6 +33,6 @@ args = parse_args(pnames, dflts, varargin{:});
 ds.mat = robust_zscore(ds.mat, 2, varargin{:});
 
 % save the dataset
-mkgct(fullfile(args.plate_path, sprintf('%s_ZSPCQNORM', args.plate)), ds);
+mkgct(fullfile(args.plate_path, args.plate, sprintf('%s_ZSPCQNORM', args.plate)), ds);
 
 end

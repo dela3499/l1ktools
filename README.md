@@ -121,7 +121,7 @@ Below are summarized the tools available to perform so common data analysis task
 ### Running the standard CMap data processing pipeline
 All scripts are contained within the matlab/data_pipeline folder.
 A directory of example .lxb files from a LINCS Joint Project (LJP) plate
-under the data/ directory.
+under the data/lxb directory.
 
 ```
 % setup the envronment
