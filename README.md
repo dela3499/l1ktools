@@ -23,8 +23,33 @@ will update the tools as they become available.
 #### Setting the MATLAB path:
 Enter the "pathtool" command, click "Add with Subfolders...", and select the directory l1ktools/matlab.
 
+### Running the standard CMap data processing pipeline
+All scripts are contained within the matlab/data_pipeline folder.
+A directory of example .lxb files from a LINCS Joint Project (LJP) plate
+under the data/lxb directory. For those who wish to view outputs without
+running the pipeline and/or compare their results with CMap's,
+example pipeline outputs are under matlab/data_pipeline/results.
 
-#### Tools:
+```
+% setup the envronment
+l1kt_setup
+
+% convert a directory of LXB files (level 1) into gene expression (GEX, level 2) matrix.
+% here, using example data
+gex_ds = level1_to_level2('plate', 'LJP009_A375_24H_X1_B20', 'raw_path', '../data/lxb', 'map_path', '../data/maps')
+
+% convert the GEX matrix (level 2) to quantile normalized (QNORM, level 3) matrices
+% in both landmark and inferred (INF) gene spaces.
+[qnorm_ds, inf_ds] = level2_to_level3('plate', 'LJP009_A375_24H_X1_B20', 'plate_path', '.')
+
+% convert the QNORM matrix (level 3) into z-scores (level 4).
+% same procedure can be performed using INF matrix (not shown).
+zs_ds = level3_to_level4(qnorm_ds, 'plate', 'LJP009_A375_24H_X1_B20', 'plate_path', '.')
+
+```
+
+
+#### Other Tools and Demos (under matlab/demos_and_examples):
 * [**l1kt_dpeak.m**](https://github.com/cmap/l1ktools/blob/master/matlab/l1kt_dpeak.m): Performs peak deconvolution for all analytes in a single LXB file, and outputs a report of the detected peaks.
 * [**l1kt_plot_peaks.m**](https://github.com/cmap/l1ktools/blob/master/matlab/l1kt_plot_peaks.m): Plots intensity distributions for one or more analytes in an LXB file.
 * [**l1kt_parse_lxb.m**](https://github.com/cmap/l1ktools/blob/master/matlab/l1kt_parse_lxb.m):	Reads an LXB file and returns the RID and RP1 values.
@@ -118,28 +143,6 @@ Below are summarized the tools available to perform so common data analysis task
 * **MATLAB**: To read an .lxb into the MATLAB workspace, use the [l1kt_parse_lxb](https://github.com/cmap/l1ktools/blob/master/matlab/l1kt_parse_lxb.m) function.
 * **R**: To convert an .lxb file to text, use the [R/cmap/lxb2txt.sh](https://github.com/cmap/l1ktools/blob/master/R/cmap/lxb2txt.sh) script.
 
-### Running the standard CMap data processing pipeline
-All scripts are contained within the matlab/data_pipeline folder.
-A directory of example .lxb files from a LINCS Joint Project (LJP) plate
-under the data/lxb directory.
-
-```
-% setup the envronment
-l1kt_setup
-
-% convert a directory of LXB files (level 1) into gene expression (GEX, level 2) matrix.
-% here, using example data
-gex_ds = level1_to_level2('plate', 'LJP009_A375_24H_X1_B20', 'raw_path', '../data/lxb', 'map_path', '../data/maps')
-
-% convert the GEX matrix (level 2) to quantile normalized (QNORM, level 3) matrices
-% in both landmark and inferred (INF) gene spaces.
-[qnorm_ds, inf_ds] = level2_to_level3('plate', 'LJP009_A375_24H_X1_B20', 'plate_path', '.')
-
-% convert the QNORM matrix (level 3) into z-scores (level 4).
-% same procedure can be performed using INF matrix (not shown).
-zs_ds = level3_to_level4(qnorm_ds, 'plate', 'LJP009_A375_24H_X1_B20', 'plate_path', '.')
-
-```
 
 ## The LINCS API
 
