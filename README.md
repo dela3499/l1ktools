@@ -118,15 +118,18 @@ Below are summarized the tools available to perform so common data analysis task
 * **MATLAB**: To read an .lxb into the MATLAB workspace, use the [l1kt_parse_lxb](https://github.com/cmap/l1ktools/blob/master/matlab/l1kt_parse_lxb.m) function.
 * **R**: To convert an .lxb file to text, use the [R/cmap/lxb2txt.sh](https://github.com/cmap/l1ktools/blob/master/R/cmap/lxb2txt.sh) script.
 
-### Running the standard CMap data processing pipeline, aka 'roast'
-* use the matlab script `l1kt_roast.m`
+### Running the standard CMap data processing pipeline
 
 ```
-% add appropriate paths to matlab environment
-addpath(genpath('l1ktools/data')) 
-addpath(genpath('l1ktools/matlab'))
-addpath(genpath('l1ktools/matlab/lib'))
-roasted_plate = l1kt_roast('plate', '<name_of_plate>', 'plate_path', '</path/to/output>', 'raw_path', '</path/to/lxb/directory>', 'map_path', '</path/to/map/directory>');
+% setup the envronment
+l1kt_setup
+
+% convert a directory of LXB files (level 1) into gene expression (GEX, level 2) matrix.
+% here, using example data
+gex_ds = level1_to_level2('plate', 'LJP009_A375_24H_X1_B20', 'raw_path', '../data/lxb_test', 'map_path', '../data/maps');
+
+% convert the GEX matrix (level 2) to quantile normalized (QNORM, level 3) matrix.
+qnorm_ds = level2_to_level3()
 
 ```
 

@@ -1,16 +1,18 @@
-function gex = level1_to_level2(varargin)
-% Given a directory of LXB files, perform
+function gex_ds = level1_to_level2(varargin)
+% LEVEL1_TO_LEVEL2 - Given a directory of LXB files (level 1 data), perform
 % peak deconvolution flip adjustment.
-% Return to the workspace a gene expression (GEX)
-% dataset and also save as a gct file.
+% Return to the workspace a gene expression (GEX, level 2 data)
+% dataset and also save as a .gct file.
 %
 % Arguments:
-% plate: the name of the directory of LXB files
-% raw_path: the path to the directory containing plate
-% map_path: the path to the directory containing the a file with sample annotations
+% 
+%	Parameter	Value
+%	plate 		the name of the directory of LXB files
+% 	raw_path	the path to the directory containing plate
+% 	map_path 	the path to the directory containing the a file with sample annotations
 % 
 % Example:
-% gex = level1_to_level2('plate', 'LJP009_A375_24H_X1_B20', ...
+% gex_ds = level1_to_level2('plate', 'LJP009_A375_24H_X1_B20', ...
 % 'raw_path', '../data/lxb_test', 'map_path', '../data/maps');
 
 toolname = mfilename;
@@ -32,7 +34,7 @@ arg = parse_args(pnames, dflts, varargin{:});
 dpeak_pipe(varargin{:});
 
 % and flip adjustment
-gex = flipadjust_pipe(varargin{:});
+gex_ds = flipadjust_pipe(varargin{:});
 
 fprintf('-[ %s ]- Done\n', upper(toolname));
 
