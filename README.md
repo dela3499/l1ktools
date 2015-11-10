@@ -1,7 +1,7 @@
 # L1000 Analysis Tools v1.0
 
 
-Copyright 2011-2014 Broad Institute of MIT and Harvard.
+Copyright 2011-2015 Broad Institute of MIT and Harvard.
 
 A collection of software tools to read and analyze data produced from
 the L1000 project (www.lincscloud.org).
@@ -11,7 +11,8 @@ the L1000 project (www.lincscloud.org).
 A brief description of the tools included in this software package is
 given below. The Matlab implementation of the tools is currently the
 most mature. Some basic utilities in R and java are also included. We
-will update the tools as they become available.
+will update the tools as they become available. Please view the changelog
+for changes.
 
 ### Matlab Tools: matlab/
 
@@ -47,6 +48,7 @@ gex_ds = level1_to_level2('plate', 'LJP009_A375_24H_X1_B20', 'raw_path', '../dat
 zs_ds = level3_to_level4(qnorm_ds, 'plate', 'LJP009_A375_24H_X1_B20', 'plate_path', '.')
 
 ```
+#### Description of Pipeline Outputs
 
 
 #### Other Tools and Demos (under matlab/demos_and_examples):
