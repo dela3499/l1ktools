@@ -1,6 +1,31 @@
+11-10-2015 Updates
+------------------
+1. Data processing scripts 
+
+Added scripts and dependencies for running L1000 data
+processing pipeline. These scripts allow users to take
+a plate of data through the various L1000 data levels. 
+See the README for more information and instructions
+on how to run the scripts. Many new files were added
+with these changes, but the highlights are summarized
+below.
+
+Code:
+matlab/data_pipeline/process_plate.m
+matlab/data_pipeline/level1_to_level2.m
+matlab/data_pipeline/level2_to_level3.m
+matlab/data_pipeline/level3_to_level4.m
+
+Data:
+matlab/data_pipeline/results
+
+
 5-14-2013 Updates
 -----------------
 1. Added GCTX write support
+
+Code:
+R/cmap/io.R
 
 
 11-18-2012 Updates
