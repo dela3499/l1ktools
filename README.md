@@ -22,14 +22,14 @@ for changes.
 2. Statistics Toolbox
 
 #### Setting the MATLAB path:
-Enter the "pathtool" command, click "Add with Subfolders...", and select the directory l1ktools/matlab.
+Run `run l1kt_setup.m` or enter the `pathtool` command, click "Add with Subfolders...", and select the directory `l1ktools/matlab`.
 
 ### Running the standard CMap data processing pipeline
 All scripts are contained within the `matlab/data_pipeline` folder.
 A directory of example .lxb files from a LINCS Joint Project (LJP) plate
 under the `data/lxb` directory. Note that this process may take up to an hour depending on the machine you're running it on. For those who wish to view outputs without running the pipeline and/or compare their results with CMap's, example pipeline outputs are under `matlab/data_pipeline/results`. These outputs are described in the section below.
 
-```
+```matlab
 % setup the envronment
 l1kt_setup
 
@@ -49,9 +49,9 @@ gex_ds = level1_to_level2('plate', 'LJP009_A375_24H_X1_B20', 'raw_path', '../dat
 zs_ds = level3_to_level4(qnorm_ds, 'plate', 'LJP009_A375_24H_X1_B20', 'plate_path', '.')
 
 ```
-*** Note: *** Because the peak detection algorithm is non-deterministic, it's possible that data in levels 2 through 4 could differ slightly for two instances of processing the same plate. The code allows reproducing a previous run by passing a random seed file to the `process_plate` script. We provide such a file at `resources/rndseed.mat`. Reproducing the results provided in matlab/data_pipeline/results can be done as follows:
+**Note:** Because the peak detection algorithm is non-deterministic, it's possible that data in levels 2 through 4 could differ slightly for two instances of processing the same plate. The code allows reproducing a previous run by passing a random seed file to the `process_plate` script. We provide such a file at `resources/rndseed.mat`. Reproducing the results provided in matlab/data_pipeline/results can be done as follows:
 
-```
+```matlab
 % reproduce provided results
 [gex_ds, qnorm_ds, inf_ds, zs_ds_qnorm, zs_ds_inf] = process_plate('plate', 'LJP009_A375_24H_X1_B20', 'raw_path', '../data/lxb', 'map_path', '../data/maps', 'rndseed', 'resources/rndseed.mat');
 ```
@@ -63,8 +63,8 @@ zs_ds = level3_to_level4(qnorm_ds, 'plate', 'LJP009_A375_24H_X1_B20', 'plate_pat
 | LJP009_A375_24H_X1_B20.map | Sample annotations file |
 | LJP009_A375_24H_X1_B20_COUNT_n384x978.gct | Matrix of analyte counts per sample|
 | LJP009_A375_24H_X1_B20_GEX_n384x978.gct | Level 2 matrix of gene expression (GEX) values|
-| LJP009_A375_24H_X1_B20_INF_n371x22268.gct | Level 3 matrix of normalized expession profiles (full inferred space)|
 | LJP009_A375_24H_X1_B20_QNORM_n371x978.gct | Level 3 matrix of normalized expession profiles (landmark space) |
+| LJP009_A375_24H_X1_B20_INF_n371x22268.gct | Level 3 matrix of normalized expession profiles (full inferred space)|
 | LJP009_A375_24H_X1_B20_ZSPCQNORM_n371x978.gct | Level 4 matrix of differential expression signatures (landmark space) |
 | LJP009_A375_24H_X1_B20_ZSPCINF_n371x22268.gct | Level 4 matrix of differential expression signatures (full inferred space) |
 | dpeak | folder containing peak detection outputs and QC |
