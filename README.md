@@ -63,8 +63,8 @@ zs_ds = level3_to_level4(qnorm_ds, 'plate', 'LJP009_A375_24H_X1_B20', 'plate_pat
 | LJP009_A375_24H_X1_B20.map | Sample annotations file |
 | LJP009_A375_24H_X1_B20_COUNT_n384x978.gct | Matrix of analyte counts per sample|
 | LJP009_A375_24H_X1_B20_GEX_n384x978.gct | Level 2 matrix of gene expression (GEX) values|
-| LJP009_A375_24H_X1_B20_INF_n371x22268.gct | Level 3 matrix of normalized expession profiles (full inferred space)|
 | LJP009_A375_24H_X1_B20_QNORM_n371x978.gct | Level 3 matrix of normalized expession profiles (landmark space) |
+| LJP009_A375_24H_X1_B20_INF_n371x22268.gct | Level 3 matrix of normalized expession profiles (full inferred space)|
 | LJP009_A375_24H_X1_B20_ZSPCQNORM_n371x978.gct | Level 4 matrix of differential expression signatures (landmark space) |
 | LJP009_A375_24H_X1_B20_ZSPCINF_n371x22268.gct | Level 4 matrix of differential expression signatures (full inferred space) |
 | dpeak | folder containing peak detection outputs and QC |
