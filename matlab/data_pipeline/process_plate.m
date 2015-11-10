@@ -27,7 +27,7 @@ function [gex_ds, qnorm_ds, inf_ds, zs_ds_qnorm, zs_ds_inf] = process_plate(vara
 % 
 % Example:
 %  [gex_ds, qnorm_ds, inf_ds, zs_ds_qnorm, zs_ds_inf] = process_plate('plate', 'LJP009_A375_24H_X1_B20', ...
-% 'raw_path', '../data/lxb_test', 'map_path', '../data/maps');
+% 'raw_path', '../data/lxb', 'map_path', '../data/maps');
 
 toolname = mfilename;
 fprintf('-[ %s ]- Start\n', upper(toolname));
