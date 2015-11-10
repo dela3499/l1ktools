@@ -16,7 +16,7 @@ for changes.
 
 ### Matlab Tools: matlab/
 
-#### Requirements:
+#### Requirements
 
 1. Matlab R2014b and above
 2. Statistics Toolbox
@@ -73,24 +73,24 @@ zs_ds = level3_to_level4(qnorm_ds, 'plate', 'LJP009_A375_24H_X1_B20', 'plate_pat
 
 
 ---
-#### Other Tools and Demos (under matlab/demos_and_examples):
-* [**l1kt_dpeak.m**](https://github.com/cmap/l1ktools/blob/master/matlab/l1kt_dpeak.m): Performs peak deconvolution for all analytes in a single LXB file, and outputs a report of the detected peaks.
-* [**l1kt_plot_peaks.m**](https://github.com/cmap/l1ktools/blob/master/matlab/l1kt_plot_peaks.m): Plots intensity distributions for one or more analytes in an LXB file.
-* [**l1kt_parse_lxb.m**](https://github.com/cmap/l1ktools/blob/master/matlab/l1kt_parse_lxb.m):	Reads an LXB file and returns the RID and RP1 values.
-* [**l1kt_liss.m**](https://github.com/cmap/l1ktools/blob/master/matlab/l1kt_liss.m): Performs Luminex Invariant Set Smoothing on a raw (GEX) input .gct file
-* [**l1kt_qnorm.m**](https://github.com/cmap/l1ktools/blob/master/matlab/l1kt_qnorm.m):	Performs quantile normalization on an input .gct file
-* [**l1kt_infer.m**](https://github.com/cmap/l1ktools/blob/master/matlab/l1kt_infer.m):	Infers expression of target genes from expression of landmark genes in an input .gct file
+#### Other Tools and Demos (under matlab/demos_and_examples)
+* **l1kt_dpeak.m**: Performs peak deconvolution for all analytes in a single LXB file, and outputs a report of the detected peaks.
+* **l1kt_plot_peaks.m**: Plots intensity distributions for one or more analytes in an LXB file.
+* **l1kt_parse_lxb.m**:	Reads an LXB file and returns the RID and RP1 values.
+* **l1kt_liss.m**: Performs Luminex Invariant Set Smoothing on a raw (GEX) input .gct file
+* **l1kt_qnorm.m**:	Performs quantile normalization on an input .gct file
+* **l1kt_infer.m**:	Infers expression of target genes from expression of landmark genes in an input .gct file
 
 See the documentation included with each script for a details on usage
 and input parameters.
 
-#### Demo:
-* [**dpeak_demo.m**](https://github.com/cmap/l1ktools/blob/master/matlab/dpeak_demo.m): Demo of peak detection. To run the demo, start Matlab, change to the folder containing dpeak_demo and
+#### Demo
+* **dpeak_demo.m**: Demo of peak detection. To run the demo, start Matlab, change to the folder containing dpeak_demo and
 type dpeak_demo in the Command Window. This will read a sample LXB
 file (A10.lxb), generate a number of intensity distribution plots and create a
 text report of the statistics of the detected peaks (A10_pkstats.txt).
 
-* [**example_methods.m**](https://github.com/cmap/l1ktools/blob/master/matlab/example_methods.m): Reads in a .gct and a .gctx file, z-score the data in the .gctx file, and read in an .lxb file. To run the demo, start Matlab, change to the folder containing example_methods and type example_methods at the command line.
+* **example_methods.m**: Reads in a .gct and a .gctx file, z-score the data in the .gctx file, and read in an .lxb file. To run the demo, start Matlab, change to the folder containing example_methods and type example_methods at the command line.
 
 ---
 ### R Tools: R/
@@ -105,30 +105,30 @@ text report of the statistics of the detected peaks (A10_pkstats.txt).
 
 R tools are found under R/cmap
 
-* [**lxb2txt.R**](https://github.com/cmap/l1ktools/blob/master/R/cmap/lxb2txt.R):	Saves values from an LXB file as a tab-delimited text file.
-* [**lxb2txt.sh**](https://github.com/cmap/l1ktools/blob/master/R/cmap/lxb2txt.sh): Bash wrapper to lxb2txt.R 
-* [**io.R**](https://github.com/cmap/l1ktools/blob/master/R/cmap/io.R): Classes for reading and writing .gct / .gctx files
+* **lxb2txt.R**:	Saves values from an LXB file as a tab-delimited text file.
+* **lxb2txt.sh**: Bash wrapper to lxb2txt.R 
+* **io.R**: Classes for reading and writing .gct / .gctx files
 
-#### Demo:
-* [**example_methods.R**](https://github.com/cmap/l1ktools/blob/master/R/example_methods.R): To run the demo, change to the folder containing example_methods.R and source the script. It will read in a .gctx file and display its contents.
+#### Demo
+* **example_methods.R**: To run the demo, change to the folder containing example_methods.R and source the script. It will read in a .gctx file and display its contents.
 
 ---
 ### Java Tools: java/
 
-#### Tools:
+#### Tools
 
-* [**GctxDataset.java**](https://github.com/cmap/l1ktools/blob/master/java/src/l1ktools/cmap/GctxDataset.java): Class to store a GCTX data set.
-* [**GctxReader.java**](https://github.com/cmap/l1ktools/blob/master/java/src/l1ktools/cmap/GctxReader.java): Class to read a GCTX file.
-* [**LXBUtil.java**](https://github.com/cmap/l1ktools/blob/master/java/src/l1ktools/cmap/LXBUtil.java): Class to read and store .lxb files.
+* **GctxDataset.java**: Class to store a GCTX data set.
+* **GctxReader.java**: Class to read a GCTX file.
+* **LXBUtil.java**: Class to read and store .lxb files.
 
-#### Demo:
-* [**ReadGctxExample.java**](https://github.com/cmap/l1ktools/blob/master/java/examples/ReadGctxExample.java): To run the demo, change to the java/examples folder, then compile by running sh compileExamples.sh, then run by running the runExample*.sh file that alligns with your OS. 
+#### Demo
+* **ReadGctxExample.java**: To run the demo, change to the java/examples folder, then compile by running sh compileExamples.sh, then run by running the runExample*.sh file that alligns with your OS. 
 * 
 
 ---
 ### Python Tools: python/
 
-#### Requirements:
+#### Requirements
 
 1. Python 2.7 (untested under Python 3)
 2. numpy: [http://numpy.scipy.org](http://numpy.scipy.org)
@@ -137,37 +137,37 @@ R tools are found under R/cmap
 5. pytables: [http://www.pytables.org/moin](http://www.pytables.org/moin)
 6. blessings: [http://pypi.python.org/pypi/blessings](http://pypi.python.org/pypi/blessings)
 
-#### Setting the Python path:
-To run, append l1ktools/python to the PYTHONPATH environment variable.
+#### Setting the Python path
+To run, append l1ktools/python to the `PYTHONPATH` environment variable.
 
-#### Tools:
-* [**cmap/io/gct.py**](https://github.com/cmap/l1ktools/blob/master/python/cmap/io/gct.py) : Classes to interact with .gct and .gctx files.
-* [**cmap/util/api_utils.py**](https://github.com/cmap/l1ktools/blob/master/python/cmap/util/api_utils.py): Classes to make calls to the LINCS annotation API and return results as Python data structures.
+#### Tools
+* **cmap/io/gct.py**: Classes to interact with .gct and .gctx files.
+* **cmap/util/api_utils.py**: Classes to make calls to the LINCS annotation API and return results as Python data structures.
 
-#### Demo:
-* [**example_methods.py**](https://github.com/cmap/l1ktools/blob/master/python/example_methods.py): To run the demo, change to the folder containing example_methods.py and run the script. It will read in a .gctx file, display its contents, and write to disc.
+#### Demo
+* **example_methods.py**: To run the demo, change to the folder containing example_methods.py and run the script. It will read in a .gctx file, display its contents, and write to disc.
 
 ---
 ## Common data analysis tasks
 
 
 ### Reading .gct and .gctx files
-* **MATLAB**: Use the [parse_gctx](https://github.com/cmap/l1ktools/blob/master/matlab/parse_gctx.m) function.
-* **R**: Source the script [l1ktools/R/cmap/io.R](https://github.com/cmap/l1ktools/blob/master/R/cmap/io.R). Then use the parse.gctx function.
-* **Python**: Import the module [cmap.io.gct](https://github.com/cmap/l1ktools/blob/master/python/cmap/io/gct.py). Then instantiate a GCT object, and call its read() method. For more information, see the documentation on the GCT class.
-* **Java**: See [ReadGctxExample.java](https://github.com/cmap/l1ktools/blob/master/java/examples/ReadGctxExample.java) for an example.
+* **MATLAB**: Use the `parse_gctx` function.
+* **R**: Source the script `l1ktools/R/cmap/io.R`. Then use the `parse.gctx` function.
+* **Python**: Import the module `cmap.io.gct`. Then instantiate a GCT object, and call its `read()` method. For more information, see the documentation on the GCT class.
+* **Java**: See `ReadGctxExample.java` for an example.
 
 ### Creating .gct and .gctx files
-* **MATLAB**: Use the [mkgct](https://github.com/cmap/l1ktools/blob/master/matlab/lib/mkgct.m) and [mkgctx](https://github.com/cmap/l1ktools/blob/master/matlab/lib/mkgctx.m) functions.
-* **R** Source the script [l1ktools/R/cmap/io.R](https://github.com/cmap/l1ktools/blob/master/R/cmap/io.R). Then use the write.gctx or write.gct functions.
-* **Python**: Import [cmap.io.gct](https://github.com/cmap/l1ktools/blob/master/python/cmap/io/gct.py) and instantiate a GCT object. Then call the "build" method or "build_from_DataFrame" method to assmble a GCT object from a data matrix and optionally row and column annotations. Finally, call the "write" method to write to file as a .gctx.
+* **MATLAB**: Use the `mkgct` and `mkgctx` functions.
+* **R** Source the script `l1ktools/R/cmap/io.R`. Then use the `write.gctx` or `write.gct` functions.
+* **Python**: Import `cmap.io.gct` and instantiate a GCT object. Then call the `build` method or `build_from_DataFrame` method to assmble a GCT object from a data matrix and optionally row and column annotations. Finally, call the `write` method to write to file as a .gctx.
 
 ### Z-Scoring a data set
-* **MATLAB**: Use the [robust_zscore](https://github.com/cmap/l1ktools/blob/master/matlab/robust_zscore.m) function. Also see the [example_methods.m](https://github.com/cmap/l1ktools/blob/master/matlab/example_methods.m) script.
+* **MATLAB**: Use the `robust_zscore` function. Also see the `example_methods.m` script.
 
 ### Reading / converting .lxb files
-* **MATLAB**: To read an .lxb into the MATLAB workspace, use the [l1kt_parse_lxb](https://github.com/cmap/l1ktools/blob/master/matlab/l1kt_parse_lxb.m) function.
-* **R**: To convert an .lxb file to text, use the [R/cmap/lxb2txt.sh](https://github.com/cmap/l1ktools/blob/master/R/cmap/lxb2txt.sh) script.
+* **MATLAB**: To read an .lxb into the MATLAB workspace, use the `l1kt_parse_lxb` function.
+* **R**: To convert an .lxb file to text, use the `R/cmap/lxb2txt.sh` script.
 
 ---
 
@@ -177,7 +177,7 @@ The CMAP Cloud API offers programmatic access to annotations and perturbational 
 
 ### Interacting with the API
 
-In order to make the API call, an API key must be provided. If you do not have a key, contact lincs@broadinstitute.org.
+In order to make the API call, an API key must be provided. If you do not have a key, contact [lincs@broadinstitute.org](mailto:lincscloud@broadinstitute.org).
 
 * **Lincscloud website**: To view the available services and live examples, visit [http://api.lincscloud.org/](http://api.lincscloud.org/).
 * **Programmatic access via Python**: Import the module [cmap.util.api_utils](https://github.com/cmap/l1ktools/blob/master/python/cmap/util/api_utils.py). The classes CMapAPI and APIContainer handle calls to the API; see their documentation for more details. See example_methods.py for an example API call.
