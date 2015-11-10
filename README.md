@@ -179,11 +179,11 @@ The CMAP Cloud API offers programmatic access to annotations and perturbational 
 
 In order to make the API call, an API key must be provided. If you do not have a key, contact [lincs@broadinstitute.org](mailto:lincscloud@broadinstitute.org).
 
-* **Lincscloud website**: To view the available services and live examples, visit [http://api.lincscloud.org/](http://api.lincscloud.org/).
-* **Programmatic access via Python**: Import the module [cmap.util.api_utils](https://github.com/cmap/l1ktools/blob/master/python/cmap/util/api_utils.py). The classes CMapAPI and APIContainer handle calls to the API; see their documentation for more details. See example_methods.py for an example API call.
+* **Lincscloud website**: To view the available services and live examples, visit [api.lincscloud.org/](http://api.lincscloud.org/).
+* **Programmatic access via Python**: Import the module `cmap.util.api_utils`. The classes `CMapAPI` and `APIContainer` handle calls to the API; see their documentation for more details. See `example_methods.py` for an example API call.
 
 #### Python demo:
-* [**api_examples.py**](https://github.com/cmap/l1ktools/blob/master/python/api_examples.py): To run the demo, change to the folder containing api_examples.py and run the script. It will make calls to the API and store their results as Python data structures.
+* **api_examples.py**: To run the demo, change to the folder containing `api_examples.py` and run the script. It will make calls to the API and store their results as Python data structures.
 
 ---
 
