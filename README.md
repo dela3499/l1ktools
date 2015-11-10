@@ -68,9 +68,9 @@ zs_ds = level3_to_level4(qnorm_ds, 'plate', 'LJP009_A375_24H_X1_B20', 'plate_pat
 | LJP009_A375_24H_X1_B20_INF_n371x22268.gct | 3 | full | quantile normalized (QNORM) expession profiles |
 | LJP009_A375_24H_X1_B20_ZSPCQNORM_n371x978.gct | 4 | landmark | differential expression (z-score) signatures |
 | LJP009_A375_24H_X1_B20_ZSPCINF_n371x22268.gct | 4 | full | differential expression (z-score) signatures |
-| dpeak | folder containing peak detection outputs and QC | n/a | n/a |
-| liss | folder containing LISS outputs and QC | n/a | n/a |
-| quantile_plots.png | Plot of the normalized and non-normalized expression quantiles | n/a | n/a |
+| dpeak | n/a | n/a | folder containing peak detection outputs and QC | 
+| liss | n/a | n/a | folder containing LISS outputs and QC | 
+| quantile_plots.png |  n/a | n/a | Plot of the normalized and non-normalized expression quantiles |
 
 
 ---
