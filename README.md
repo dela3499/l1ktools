@@ -58,18 +58,19 @@ zs_ds = level3_to_level4(qnorm_ds, 'plate', 'LJP009_A375_24H_X1_B20', 'plate_pat
 
 #### Description of Pipeline Outputs
 
-| File | Description |
-| ---- | ----------- |
-| LJP009_A375_24H_X1_B20.map | Sample annotations file |
-| LJP009_A375_24H_X1_B20_COUNT_n384x978.gct | Matrix of analyte counts per sample|
-| LJP009_A375_24H_X1_B20_GEX_n384x978.gct | Level 2 matrix of gene expression (GEX) values|
-| LJP009_A375_24H_X1_B20_QNORM_n371x978.gct | Level 3 matrix of normalized expession profiles (landmark space) |
-| LJP009_A375_24H_X1_B20_INF_n371x22268.gct | Level 3 matrix of normalized expession profiles (full inferred space)|
-| LJP009_A375_24H_X1_B20_ZSPCQNORM_n371x978.gct | Level 4 matrix of differential expression signatures (landmark space) |
-| LJP009_A375_24H_X1_B20_ZSPCINF_n371x22268.gct | Level 4 matrix of differential expression signatures (full inferred space) |
-| dpeak | folder containing peak detection outputs and QC |
-| liss | folder containing LISS outputs and QC |
-| quantile_plots.png | Plot of the normalized and non-normalized expression quantiles |
+| File | Data Level | Gene Space | Description |
+| ---- | ----------- | ----------- | ---------- |
+| LJP009_A375_24H_X1_B20.map | n/a | n/a | Sample annotations file |
+| LJP009_A375_24H_X1_B20_COUNT_n384x978.gct | n/a | landmark | Matrix of analyte counts per sample|
+| LJP009_A375_24H_X1_B20_GEX_n384x978.gct | 2 | landmark | gene expression (GEX) values|
+| LJP009_A375_24H_X1_B20_NORM_n371x978.gct | n/a | landmark | LISS normalized expession profiles |
+| LJP009_A375_24H_X1_B20_QNORM_n371x978.gct | 3 | landmark | quantile normalized (QNORM) expession profiles |
+| LJP009_A375_24H_X1_B20_INF_n371x22268.gct | 3 | full | quantile normalized (QNORM) expession profiles |
+| LJP009_A375_24H_X1_B20_ZSPCQNORM_n371x978.gct | 4 | landmark | differential expression (z-score) signatures |
+| LJP009_A375_24H_X1_B20_ZSPCINF_n371x22268.gct | 4 | full | differential expression (z-score) signatures |
+| dpeak | folder containing peak detection outputs and QC | n/a | n/a |
+| liss | folder containing LISS outputs and QC | n/a | n/a |
+| quantile_plots.png | Plot of the normalized and non-normalized expression quantiles | n/a | n/a |
 
 
 ---
