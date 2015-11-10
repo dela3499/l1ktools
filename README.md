@@ -22,14 +22,14 @@ for changes.
 2. Statistics Toolbox
 
 #### Setting the MATLAB path:
-Enter the "pathtool" command, click "Add with Subfolders...", and select the directory l1ktools/matlab.
+Run `run l1kt_setup.m` or enter the `pathtool` command, click "Add with Subfolders...", and select the directory `l1ktools/matlab`.
 
 ### Running the standard CMap data processing pipeline
 All scripts are contained within the `matlab/data_pipeline` folder.
 A directory of example .lxb files from a LINCS Joint Project (LJP) plate
 under the `data/lxb` directory. Note that this process may take up to an hour depending on the machine you're running it on. For those who wish to view outputs without running the pipeline and/or compare their results with CMap's, example pipeline outputs are under `matlab/data_pipeline/results`. These outputs are described in the section below.
 
-```
+```matlab
 % setup the envronment
 l1kt_setup
 
@@ -51,7 +51,7 @@ zs_ds = level3_to_level4(qnorm_ds, 'plate', 'LJP009_A375_24H_X1_B20', 'plate_pat
 ```
 *** Note: *** Because the peak detection algorithm is non-deterministic, it's possible that data in levels 2 through 4 could differ slightly for two instances of processing the same plate. The code allows reproducing a previous run by passing a random seed file to the `process_plate` script. We provide such a file at `resources/rndseed.mat`. Reproducing the results provided in matlab/data_pipeline/results can be done as follows:
 
-```
+```matlab
 % reproduce provided results
 [gex_ds, qnorm_ds, inf_ds, zs_ds_qnorm, zs_ds_inf] = process_plate('plate', 'LJP009_A375_24H_X1_B20', 'raw_path', '../data/lxb', 'map_path', '../data/maps', 'rndseed', 'resources/rndseed.mat');
 ```
