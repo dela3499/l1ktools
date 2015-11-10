@@ -26,8 +26,7 @@ Run `run l1kt_setup.m` or enter the `pathtool` command, click "Add with Subfolde
 
 ### Running the standard CMap data processing pipeline
 All scripts are contained within the `matlab/data_pipeline` folder.
-A directory of example .lxb files from a LINCS Joint Project (LJP) plate
-under the `data/lxb` directory. Note that this process may take up to an hour depending on the machine you're running it on. For those who wish to view outputs without running the pipeline and/or compare their results with CMap's, example pipeline outputs are under `matlab/data_pipeline/results`. These outputs are described in the section below.
+A directory of example .lxb files from a LINCS Joint Project (LJP) plate under the `data/lxb` directory. Note that this process may take up to an hour depending on the machine you're running it on. For those who wish to view outputs without running the pipeline and/or compare their results with CMap's, example pipeline outputs are under `matlab/data_pipeline/results`. These outputs are described in the section below. By default all outputs are saved in the current working directory, but this can be overriden using the `plate_path` argument to any of the scripts below.
 
 ```matlab
 % setup the envronment
