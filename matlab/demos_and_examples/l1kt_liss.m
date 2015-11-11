@@ -18,7 +18,8 @@ function normds = l1kt_liss(raw, out, varargin)
 
 % Get optional arguments
 pnames = {'ref', 'gmx_cal'};
-dflts = {'../data/log_ybio_epsilon.gct', '../data/epsilon_cal.gmx'};
+dflts = {fullfile(mortarpath, 'resources/log_ybio_epsilon.gct'),...
+         fullfile(mortarpath, 'resources/epsilon_cal.gmx')};
 args = parse_args(pnames,dflts,varargin{:});
 
 % normalize the data sets

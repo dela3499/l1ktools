@@ -20,39 +20,51 @@ for changes.
 
 1. Matlab R2014b and above
 2. Statistics Toolbox
+3. Parallel Processing Toolbox [Optional]
 
 #### Setting the MATLAB path:
-Run `run l1kt_setup.m` or enter the `pathtool` command, click "Add with Subfolders...", and select the directory `l1ktools/matlab`.
+Run `cd l1ktools/matlab; l1kt_setup` or enter the `pathtool` command, click "Add with Subfolders...", and select the directory `l1ktools/matlab`.
 
 ### Running the standard CMap data processing pipeline
 All scripts are contained within the `matlab/data_pipeline` folder.
-A directory of example .lxb files from a LINCS Joint Project (LJP) plate under the `data/lxb` directory. Note that this process may take up to an hour depending on the machine you're running it on. For those who wish to view outputs without running the pipeline and/or compare their results with CMap's, example pipeline outputs are under `matlab/data_pipeline/results`. These outputs are described in the section below. By default all outputs are saved in the current working directory, but this can be overriden using the `plate_path` argument to any of the scripts below.
+A directory of example .lxb files from a LINCS Joint Project (LJP) plate under the `data/lxb` directory. Note that processing a full 384 well plate can take a long time depending on the machine you're running it on. For test purposes we provide a test plate with a smaller number of samples. We also provide pre-computed results in `matlab/data_pipeline/results` to enable viewing the outputs without running the pipeline and/or to compare their results with CMap's. These outputs are described in the section below. By default all outputs are saved in the current working directory, but this can be overriden using the `plate_path` argument to any of the scripts below.
 
 ```matlab
-% setup the envronment
+% Setup the envronment
 l1kt_setup
 
-% process a full plate of data
-[gex_ds, qnorm_ds, inf_ds, zs_ds_qnorm, zs_ds_inf] = process_plate('plate', 'LJP009_A375_24H_X1_B20', 'raw_path', '../data/lxb', 'map_path', '../data/maps');
+% Plate to process
+plate_name='LJP009_A375_24H_X1_B20';
+% plate_name='TEST_A375_24H_X1_B20'; % A smaller test plate
+% Parent folder containing raw lxb files for a given plate
+raw_path=fullfile(mortarpath, '../data/lxb');
+% Path to map files with sample annotations
+map_path=fullfile(mortarpath, '../data/maps');
+% Results folder
+plate_path=pwd;
 
-% convert a directory of LXB files (level 1) into gene expression (GEX, level 2) matrix.
+% Run the full pipeline on a plate of data
+[gex_ds, qnorm_ds, inf_ds, zs_ds_qnorm, zs_ds_inf] = process_plate('plate', plate_name, 'raw_path', raw_path, 'map_path', map_path);
+
+% Run specific parts of the pipeline
+% Convert a directory of LXB files (level 1) into gene expression (GEX, level 2) matrix.
 % here, using example data
-gex_ds = level1_to_level2('plate', 'LJP009_A375_24H_X1_B20', 'raw_path', '../data/lxb', 'map_path', '../data/maps')
+gex_ds = level1_to_level2('plate', plate_name, 'raw_path', raw_path, 'map_path', map_path)
 
-% convert the GEX matrix (level 2) to quantile normalized (QNORM, level 3) matrices
+% Convert the GEX matrix (level 2) to quantile normalized (QNORM, level 3) matrices
 % in both landmark and inferred (INF) gene spaces.
-[qnorm_ds, inf_ds] = level2_to_level3('plate', 'LJP009_A375_24H_X1_B20', 'plate_path', '.')
+[qnorm_ds, inf_ds] = level2_to_level3('plate', plate_name, 'plate_path', plate_path)
 
-% convert the QNORM matrix (level 3) into z-scores (level 4).
+% Convert the QNORM matrix (level 3) into z-scores (level 4).
 % same procedure can be performed using INF matrix (not shown).
-zs_ds = level3_to_level4(qnorm_ds, 'plate', 'LJP009_A375_24H_X1_B20', 'plate_path', '.')
+zs_ds = level3_to_level4(qnorm_ds, 'plate', plate_name, 'plate_path', plate_path)
 
 ```
 **Note:** Because the peak detection algorithm is non-deterministic, it's possible that data in levels 2 through 4 could differ slightly for two instances of processing the same plate. The code allows reproducing a previous run by passing a random seed file to the `process_plate` script. We provide such a file at `resources/rndseed.mat`. Reproducing the results provided in matlab/data_pipeline/results can be done as follows:
 
 ```matlab
 % reproduce provided results
-[gex_ds, qnorm_ds, inf_ds, zs_ds_qnorm, zs_ds_inf] = process_plate('plate', 'LJP009_A375_24H_X1_B20', 'raw_path', '../data/lxb', 'map_path', '../data/maps', 'rndseed', 'resources/rndseed.mat');
+[gex_ds, qnorm_ds, inf_ds, zs_ds_qnorm, zs_ds_inf] = process_plate('plate', plate_name, 'raw_path', raw_path, 'map_path', map_path, 'rndseed', 'resources/rndseed.mat');
 ```
 
 #### Description of Pipeline Outputs
@@ -69,6 +81,7 @@ zs_ds = level3_to_level4(qnorm_ds, 'plate', 'LJP009_A375_24H_X1_B20', 'plate_pat
 | LJP009_A375_24H_X1_B20_ZSPCINF_n371x22268.gct | 4 | full | differential expression (z-score) signatures |
 | dpeak | n/a | n/a | folder containing peak detection outputs and QC | 
 | liss | n/a | n/a | folder containing LISS outputs and QC | 
+| calibplot.png |  n/a | n/a | Plot of invariant gene sets for each sample |
 | quantile_plots.png |  n/a | n/a | Plot of the normalized and non-normalized expression quantiles |
 
 

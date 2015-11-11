@@ -5,7 +5,7 @@ function s = parse_lxbbin(fname, varargin)
 %
 % examples:
 % 
-% s=parse_lxbbin(mapdir('A1.lxb'), 'analyte_idx','1:100');
+% s=parse_lxbbin('A1.lxb', 'analyte_idx','1:100');
 
 % $Author: Rajiv Narayan [narayan@broadinstitute.org]
 % $Date: Jul.01.2010 12:01:46 EDT
@@ -14,7 +14,7 @@ pnames = {'allfields','analyte_idx'};
 dflts = {false, '0:500'};
 arg = parse_args(pnames, dflts, varargin{:});
 
-gene_classpath = mapdir(fullfile(mortarpath,'lib/GENE-E.jar'));
+gene_classpath = fullfile(mortarpath,'lib/GENE-E.jar');
 dp = javaclasspath;
 
 if ~any(strcmp(gene_classpath, dp))

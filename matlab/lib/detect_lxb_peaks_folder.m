@@ -59,11 +59,10 @@ end
 
 NANALYTE = 500;
 glabels = num2cell(1:NANALYTE);
+current_pool = [];
 if arg.parallel
     try
-        if matlabpool('size') == 0
-            matlabpool ('open') ;
-        end
+        current_pool = gcp;
     catch EM
         disp(EM)
         disp(EM.message)
@@ -71,7 +70,7 @@ if arg.parallel
         fprintf('Executing Sequentially...\n');
         arg.parallel = false;
     end
-else
+else    
     fprintf('Executing Sequentially...\n');
 end
 
@@ -120,7 +119,7 @@ parfor ii=1:nsample
 end
 
 if arg.parallel
-    matlabpool('close');
+    delete(current_pool);
 end
 
 for ii=1:nsample

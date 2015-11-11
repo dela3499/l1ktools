@@ -13,6 +13,6 @@ error(nargchk(2,2, nargin))
 
 lxb = l1kt_parse_lxb(lxbfile);
 detect_lxb_peaks_multi(lxb.RP1, lxb.RID, varargin{:}, ...
-    'analyte', analyte, 'showfig', true);
+    'analytes', analyte, 'showfig', true);
 
 end

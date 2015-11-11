@@ -27,7 +27,7 @@ function [gex_ds, qnorm_ds, inf_ds, zs_ds_qnorm, zs_ds_inf] = process_plate(vara
 % 
 % Example:
 %  [gex_ds, qnorm_ds, inf_ds, zs_ds_qnorm, zs_ds_inf] = process_plate('plate', 'LJP009_A375_24H_X1_B20', ...
-% 'raw_path', '../data/lxb', 'map_path', '../data/maps');
+% 'raw_path', fullfile(mortarpath, '../data/lxb'), 'map_path', fullfile(mortarpath, '../data/maps'));
 
 toolname = mfilename;
 fprintf('-[ %s ]- Start\n', upper(toolname));
@@ -38,36 +38,35 @@ pnames = {'plate', 'overwrite', 'precision', ...
     'detect_param', 'setrnd', 'rndseed', ...
     'incomplete_map', 'plate_path'};
 dflts = { '', false, 1, ...
-    true, true, true, ...
+    true, true, false, ...
     false, '25,182,286,373,463', 'A05,N13,G17',...
     fullfile(mortarpath,'resources', 'detect_params.txt'), true, '', ...
     false, '.'};
 args = parse_args(pnames, dflts, varargin{:});
 
-% run peak deconvolution
+% Run peak deconvolution
 dpeak_pipe(varargin{:});
 
-% flip adjustment
+% Apply flip adjustment heuristics
 gex_ds = flipadjust_pipe(varargin{:});
 
-% run LISS
+% Normalize the dataset using LISS
 norm_ds = liss_pipe(varargin{:});
 
-% and QNORM
+% Apply quantile normalization
 qnorm_ds = l1kt_qnorm(norm_ds, fullfile(args.plate_path, args.plate), 'plate', args.plate);
 
-% run inference
+% Run inference model
 inf_ds = l1kt_infer(qnorm_ds, fullfile(args.plate_path, args.plate), varargin{:});
 
-% do the z-scoring
-% lm space
+% Compute population-based, robust z-scores for landmark genes
 zs_ds_qnorm = qnorm_ds;
 zs_ds_qnorm.mat = robust_zscore(zs_ds_qnorm.mat, 2, varargin{:});
 
 % save the dataset
 mkgct(fullfile(args.plate_path, args.plate, sprintf('%s_ZSPCQNORM', args.plate)), zs_ds_qnorm);
 
-% full space
+% Compute population-based robust z-scores for all genes
 zs_ds_inf = inf_ds;
 zs_ds_inf.mat = robust_zscore(zs_ds_inf.mat, 2, varargin{:});
 

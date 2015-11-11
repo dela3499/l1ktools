@@ -3,10 +3,10 @@
 % For this script to run properly, run the script from its directory.
 
 % read a .gct file
-ds = parse_gct('../data/log_ybio_epsilon.gct');
+ds = parse_gct(fullfile(mortarpath, 'resources/log_ybio_epsilon.gct'));
 
 % read a .gctx file and inspect its contents
-ds = parse_gctx('../data/modzs_n272x978.gctx');
+ds = parse_gctx(fullfile(mortarpath, '../data/modzs_n272x978.gctx'));
 disp(ds.mat(1:10,1:10))
 disp(ds.rid(1:10))
 disp(ds.cid(1:10))
@@ -17,4 +17,4 @@ disp(ds.cdesc(1:10,:))
 zs = robust_zscore(ds.mat);
 
 % read an .lxb file
-lxb = l1kt_parse_lxb('../data/A10.lxb');
+lxb = l1kt_parse_lxb(fullfile(mortarpath, '../data/A10.lxb'));

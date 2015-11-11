@@ -18,11 +18,11 @@ function pkstats = detect_lxb_peaks_multi(rp1, rid, varargin)
 % See: DETECT_LXB_PEAKS_SINGLE
 
 pnames = {'analytes', 'notduo', 'showfig', 'rpt'};
-dflts = { 1:500, '0', false, 'xxx' };
+dflts = { 1:500, '0', false, 'MYPLATE' };
 arg = parse_args(pnames, dflts, varargin{:});
 % nonduo analytes
 arg.notduo = eval(arg.notduo);
-analyte = unique(rid(rid>0));
+analyte = intersect(arg.analytes, unique(rid(rid>0)));
 nanalyte = length(analyte);
 totanalyte = length(arg.analytes);
 pkstats(1:totanalyte, 1) = struct('pkexp', 1,...

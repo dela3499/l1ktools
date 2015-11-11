@@ -1,15 +1,11 @@
-% get path to this script
-this_path = strrep(which(mfilename), sprintf('%s%s.m',filesep, mfilename), '');  
+% Obtain absolute path to this script
+this_path = fileparts(mfilename('fullpath'));
 
-% add appropriate paths to matlab environment
-% these directories contain the .m files
+% Add appropriate paths to matlab environment
 addpath(genpath(fullfile(this_path, 'lib')));
 addpath(genpath(fullfile(this_path, 'data_pipeline')));
 addpath(genpath(fullfile(this_path, 'demos_and_examples')));
 
-% add java utils for parsing lxbs
-javaaddpath('lib/lxb-util.jar')
-
-% set up path for mortar
-% global MORTARPATH;
-MORTARPATH = '.';
+% Global variable with absolute path to the l1ktools/matlab folder
+% Referenced within the library
+MORTARPATH = this_path;

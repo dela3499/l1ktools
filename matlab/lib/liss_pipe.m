@@ -267,6 +267,13 @@ totLevels = size(cal.mat, 1);
 fname = fullfile(wkdir, sprintf('calib_%s_n%dx%d.gct', dsname,...
     numSamples, totLevels-2));
 mkgct(fname, cal, 'appenddim', false, 'precision', arg.precision);
+% calibplot
+plot_calib(cal.mat(:,2:11)', 'showfig', false,...
+            'islog2', true, 'showsamples', true, 'title', ...
+            sprintf('Calibration plot n=%d',size(cal.mat,1)));
+namefig('calibplot');
+savefigures('out', fullfile(wkdir,'..'), 'mkdir', false,...
+            'closefig', true, 'overwrite', true);
 
 % % calib curve, fit
 % fname = fullfile(wkdir, sprintf('calib_postnorm_n%dx%d.gct',numSamples, totLevels-2));

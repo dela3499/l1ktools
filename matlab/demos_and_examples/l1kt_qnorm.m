@@ -13,12 +13,18 @@ args = parse_args(pnames,dflts,varargin{:});
 
 qnormds = parse_gct(ds, 'class', 'double');
 % plot the data set quantiles before qnorming
+myfigure(false)
 subplot(2,1,1)
 qtlplot(qnormds.mat, 'pre-qnorm')
+
+% Apply qnorm
 qnormds.mat = qnorm(qnormds.mat);
+
+% post qnorm plot
 subplot(2,1,2)
 qtlplot(qnormds.mat, 'post-qnorm')
-print('-dpng', fullfile(out, 'quantile_plots'))
+namefig('quantile_plots');
+savefigures('out', out, 'mkdir', false, 'closefig', true, 'overwrite', true)
 mkgct(fullfile(out, sprintf('%s_QNORM', args.plate)), qnormds)
 end
 
