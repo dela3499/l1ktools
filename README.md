@@ -184,22 +184,6 @@ To run, append l1ktools/python to the `PYTHONPATH` environment variable.
 
 ---
 
-## The LINCS API
-
-The CMAP Cloud API offers programmatic access to annotations and perturbational signatures in [the LINCS L1000 dataset](http://lincscloud.org/) via a collection of HTTP-based RESTful web services. These services support complex queries via simple HTTP GET requests that can be executed in a web browser or any programming language. The results are returned as standard JSON objects. Click on the links on the left for usage instructions and examples.
-
-### Interacting with the API
-
-In order to make the API call, an API key must be provided. If you do not have a key, contact [lincs@broadinstitute.org](mailto:lincscloud@broadinstitute.org).
-
-* **Lincscloud website**: To view the available services and live examples, visit [api.lincscloud.org/](http://api.lincscloud.org/).
-* **Programmatic access via Python**: Import the module `cmap.util.api_utils`. The classes `CMapAPI` and `APIContainer` handle calls to the API; see their documentation for more details. See `example_methods.py` for an example API call.
-
-#### Python demo:
-* **api_examples.py**: To run the demo, change to the folder containing `api_examples.py` and run the script. It will make calls to the API and store their results as Python data structures.
-
----
-
 ## Software License
 
 This software is restricted to research use only within academic, not-for-profit institutions.
