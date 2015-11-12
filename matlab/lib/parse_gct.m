@@ -96,7 +96,7 @@ ds = struct('mat', [],...
 %max number of lines per read block
 maxline = 4000;
 %max buffer size (bytes)
-maxbuf = 100000;
+% maxbuf = 100000;
 fid = fopen(fname, 'rt');
 ds.version = strtrim(fgetl(fid));
 % second line
@@ -134,7 +134,7 @@ ds.chd = cell(ncdesc, 1);
 ds.cdesc = cell(nc, ncdesc);
 for ii=1:ncdesc
     line = fgetl(fid);
-    x = textscan(line, '%s', 'delimiter', '\t', 'bufsize', maxbuf);
+    x = textscan(line, '%s', 'delimiter', '\t');
     %sample desc
 %     ds.coldesc(x{1}{1}) = x{1}((2+nrdesc):end);
     % empty value fix
@@ -192,10 +192,9 @@ else
     for l=1:iter
         if isequal(l, 1)
             x = textscan(fid, fmt, maxline, 'delimiter', '\t', ...
-                'bufsize', maxbuf, 'headerlines', skip);
+                'headerlines', skip);
         else
-            x = textscan(fid, fmt, maxline, 'delimiter', '\t', ...
-                'bufsize', maxbuf);
+            x = textscan(fid, fmt, maxline, 'delimiter', '\t');
         end
         
         if (lctr+maxline > lc)

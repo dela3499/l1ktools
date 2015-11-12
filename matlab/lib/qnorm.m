@@ -7,7 +7,7 @@ function x = qnorm(x, varargin)
 %   NORMDS = QNORM(DS, 'param', value) specify optional parameters. 
 %
 %   Valid options are:
-%   'usesketch': boolean, Perform quantile-sketch normalization. 
+%   'use_sketch': boolean, Perform quantile-sketch normalization. 
 %       Default is false
 %   'target_sketch': GCT file or structure with values to use for sketch
 %       normalization.
@@ -15,16 +15,16 @@ function x = qnorm(x, varargin)
 %       block_size samples. Default is 1000. Note changing block_size will
 %       not alter the normalized values, but can speed up processing of
 %       large datasets.
-pnames = {'usesketch', 'target_sketch',...
+pnames = {'use_sketch', 'target_sketch',...
     'block_size', 'verbose'};
 dflts = {false, '',...
     1000, true};
 args = parse_args(pnames, dflts, varargin{:});
 
 [nr, nc] = size(x);
-if args.usesketch
+if args.use_sketch
     % quantile-sketch normalization
-    sketch = parse_gct(args.target_sketch);
+    sketch = parse_gctx(args.target_sketch);
     ns = size(sketch.mat, 1);
     
     if ~isequal(ns, nr)

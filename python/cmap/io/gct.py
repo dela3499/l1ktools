@@ -33,8 +33,8 @@ class GCT(object):
     GCTObject.read(row_inds=range(100),col_inds=range(10))
     print(GCTObject.matrix)
 
-    NOTE: The GCT class is going to recieve a substantial overhaul in the next
-    few weeks. Check back on l1ktools in mid-May 2014 for an update.
+    When reading gctx files, the rows and columns of the GCTObject's matrix will be
+    sorted according to the values of its row and column ids or indices.
     '''
     def __init__(self,src=None,read=False,verbose=True,cid=None,rid=None,
             col_inds=None, row_inds=None, matrix_only=False,frame=True):
@@ -422,8 +422,8 @@ class GCT(object):
                     self.matrix = self.matrix_node[:,row_inds]
                     self.matrix = self.matrix[col_inds,:]
         # make sure the data is in the right order given the col_inds and row_inds
-        self.matrix = self.matrix[col_inds.sort(),:]
-        self.matrix = self.matrix[:,row_inds.sort()]
+        self.matrix = self.matrix[[i[0] for i in sorted(enumerate(col_inds), key=lambda x:x[1])],:]
+        self.matrix = self.matrix[:,[i[0] for i in sorted(enumerate(row_inds), key=lambda x:x[1])]]
         self.matrix =  numpy.reshape(self.matrix,(len(col_inds),len(row_inds)))
         self.matrix = self.matrix.transpose()
         # convert data to double precision of called for

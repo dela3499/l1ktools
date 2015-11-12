@@ -1,5 +1,5 @@
 function [raw, qcrpt, cal, cidx_fail] = liss(raw, calib, ref, varargin)
-% LISS  Perform invariant set scaling on L1000 data.
+% LISS  Perform invariant set scaling on Luminex 1000-plex data.
 %   [SC, QCRPT, CALMAT, CIDX_FAIL] = LISS(RAW, CALIB, REF, PARAM)
 %
 %   Inputs:
@@ -100,11 +100,11 @@ for ii = 1:numSamples
         % fit calib curve is same as observed
         cal_fit(ii,:) = cobs;
         qcrpt(ii).qcpass = false; 
-        qcrpt(ii).Calib_slope = cobs(end) / cobs(1);
+        qcrpt(ii).calib_slope = cobs(end) / cobs(1);
         % slope in degrees
-        qcrpt(ii).Calib_slope_deg = atand(qcrpt(ii).Calib_slope);
-        qcrpt(ii).Calib_span = cobs(end) - cobs(1);
-        qcrpt(ii).Rsquare = 0;
+        qcrpt(ii).calib_slope_deg = atand(qcrpt(ii).calib_slope);
+        qcrpt(ii).calib_span = cobs(end) - cobs(1);
+        qcrpt(ii).rsquare = 0;
     else
         qcpass_idx(ii) = true;
         qcrpt(ii).qcpass = true;        
@@ -120,12 +120,12 @@ for ii = 1:numSamples
         cal_ref(:,1) = ref(1:end-2);
         % perform linear fit for quality stats
         [wt, bint, ~, ~, stats] = regress(cal_ref, x2fx(cobs));
-        qcrpt(ii).Calib_slope = wt(2);
-        qcrpt(ii).Calib_slope_deg = atand(wt(2));
-        qcrpt(ii).Calib_span = cobs(end) - cobs(1);
-        qcrpt(ii).Calib_linfit_Rsquare = stats(1);
+        qcrpt(ii).calib_slope = wt(2);
+        qcrpt(ii).calib_slope_deg = atand(wt(2));
+        qcrpt(ii).calib_span = cobs(end) - cobs(1);
+        qcrpt(ii).calib_linfit_rsquare = stats(1);
         % -log10 p-value of F statistic
-        qcrpt(ii).Calib_linfit_logpval = -log10(stats(3));
+        qcrpt(ii).calib_linfit_logpval = -log10(stats(3));
         
        switch lower(args.fitmodel)
              
@@ -135,15 +135,15 @@ for ii = 1:numSamples
                y = x2fx(x) * wt;
                cal_fit(ii, :) = x2fx(cobs) * wt;
                % quality metrics
-               qcrpt(ii).Coeff_a = wt(1);
-               qcrpt(ii).Coeff_b = wt(2);
-               qcrpt(ii).CI_a = print_dlm_line(num2cellstr(bint(1,:),...
+               qcrpt(ii).coef_a = wt(1);
+               qcrpt(ii).coef_b = wt(2);
+               qcrpt(ii).ci_a = print_dlm_line2(num2cellstr(bint(1,:),...
                    'precision',2), 'dlm', ',');
-               qcrpt(ii).CI_b = print_dlm_line(num2cellstr(bint(2,:),...
+               qcrpt(ii).ci_b = print_dlm_line2(num2cellstr(bint(2,:),...
                    'precision',2), 'dlm', ',');
-               qcrpt(ii).Rsquare = stats(1);
-               qcrpt(ii).F = stats(2);
-               qcrpt(ii).F_logpval = -log10(stats(3));
+               qcrpt(ii).rsquare = stats(1);
+               qcrpt(ii).f = stats(2);
+               qcrpt(ii).f_logpval = -log10(stats(3));
                               
            case 'power'
                % Power model non-linear least sq fit
@@ -164,23 +164,23 @@ for ii = 1:numSamples
                    % additional goodness of fit stats
                    gofstats = gof_stats(cal_ref, cal_fit(ii,:)', 3);                   
                    % coefficients
-                   qcrpt(ii).Coef_a = fobj.a;
-                   qcrpt(ii).Coef_b = fobj.b;
-                   qcrpt(ii).Coef_c = fobj.c;
+                   qcrpt(ii).coef_a = fobj.a;
+                   qcrpt(ii).coef_b = fobj.b;
+                   qcrpt(ii).coef_c = fobj.c;
                    % 95% Confidence intervals
                    ci = confint(fobj);
-                   qcrpt(ii).CI_a = print_dlm_line(num2cellstr(ci(:,1),...
+                   qcrpt(ii).ci_a = print_dlm_line2(num2cellstr(ci(:,1),...
                        'precision',2), 'dlm', ',');
-                   qcrpt(ii).CI_b = print_dlm_line(num2cellstr(ci(:,2),...
+                   qcrpt(ii).ci_b = print_dlm_line2(num2cellstr(ci(:,2),...
                        'precision',2), 'dlm', ',');
-                   qcrpt(ii).CI_c = print_dlm_line(num2cellstr(ci(:,3),...
+                   qcrpt(ii).ci_c = print_dlm_line2(num2cellstr(ci(:,3),...
                        'precision',2), 'dlm', ',');
                    % stats
-                   qcrpt(ii).Rsquare = gof.rsquare;
-                   qcrpt(ii).AdjRsquare = gof.adjrsquare;
-                   qcrpt(ii).RMSE = gof.rmse;
-                   qcrpt(ii).F = gofstats.F;
-                   qcrpt(ii).F_logpval = -log10(gofstats.pvalue + eps);
+                   qcrpt(ii).rsquare = gof.rsquare;
+                   qcrpt(ii).adjrsquare = gof.adjrsquare;
+                   qcrpt(ii).rmse = gof.rmse;
+                   qcrpt(ii).f = gofstats.F;
+                   qcrpt(ii).f_logpval = -log10(gofstats.pvalue + eps);
                else
                    error('Power fit requires the Curve Fitting Toolbox');
                end
@@ -199,16 +199,19 @@ for ii = 1:numSamples
            'zeroindex', true);
        y(bot) = blackpt - minres*rankorder(y(bot), 'direc', 'descend',...
            'zeroindex', true);       
-       qcrpt(ii).Truncated_genes = nnz(top) + nnz(bot);       
-       qcrpt(ii).Median = median(y);       
-       % IQR of profile on linear scale
-       qcrpt(ii).IQR = pow2(iqr(y));
+       qcrpt(ii).truncated_genes = nnz(top) + nnz(bot);       
+       qcrpt(ii).median = median(y);       
+       % iqr of profile on linear scale
+       qcrpt(ii).iqr = pow2(iqr(y));
+       % iqr of raw profile
+       qcrpt(ii).iqr_raw = iqr(x);
+       
        % Quantiles of the profile
        qtile = pow2(prctile(y, [1,25,75,99]));
-       qcrpt(ii).Q1 = qtile(1);
-       qcrpt(ii).Q25 = qtile(2);
-       qcrpt(ii).Q75 = qtile(3);
-       qcrpt(ii).Q99 = qtile(4);
+       qcrpt(ii).q1 = qtile(1);
+       qcrpt(ii).q25 = qtile(2);
+       qcrpt(ii).q75 = qtile(3);
+       qcrpt(ii).q99 = qtile(4);
        
        raw.mat(:, ii) = y;
             

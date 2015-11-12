@@ -1,7 +1,7 @@
 function [gs, gd, ezid] = ps2genesym(ps, varargin)
 
 pnames = {'chip', 'annpath', 'desc'};
-dflts = {'HG_U133A', '../data', false};
+dflts = {'HG_U133A', fullfile(mortarpath, 'resources'), false};
 arg = parse_args(pnames, dflts, varargin{:});
 annfile = fullfile(arg.annpath, sprintf('%s.chip', upper(arg.chip)));
 

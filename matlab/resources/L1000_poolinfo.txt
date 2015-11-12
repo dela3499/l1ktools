@@ -1,0 +1,2 @@
+id	exp_pool_id	exp_bset_revision	exp_bset	chip_file	invset_file	yref_file	missing_analytes	not_duo
+epsilon:r2	epsilon	r2	dp52,dp53	resources/L1000_EPSILON.R2.chip	resources/epsilon_analyte.gmx	resources/log_ybio_epsilon.gct	dp53:11,dp52:499	[1:10,11,499]
