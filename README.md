@@ -4,7 +4,7 @@
 Copyright 2011-2015 Broad Institute of MIT and Harvard.
 
 A collection of software tools to read and analyze data produced from
-the LINCS project ([lincsproject.org](http://lincscproject.org)).
+the LINCS project ([lincsproject.org](http://lincsproject.org)).
 
 ## Analysis Tools
 
@@ -60,7 +60,7 @@ gex_ds = level1_to_level2('plate', plate_name, 'raw_path', raw_path, 'map_path',
 zs_ds = level3_to_level4(qnorm_ds, 'plate', plate_name, 'plate_path', plate_path)
 
 ```
-**Note:** Because the peak detection algorithm is non-deterministic, it's possible that data in levels 2 through 4 could differ slightly for two instances of processing the same plate. The code allows reproducing a previous run by passing a random seed file to the `process_plate` script. We provide such a file at `resources/rndseed.mat`. Reproducing the results provided in matlab/data_pipeline/results can be done as follows:
+**Note:** Because the peak detection algorithm is non-deterministic, it's possible that data in levels 2 through 4 could differ slightly for two instances of processing the same plate. The code allows reproducing a previous run by passing a random seed file to the `process_plate` script. We provide such a file at `resources/rndseed.mat`. Reproducing the results provided in `matlab/data_pipeline/results can` be done as follows:
 
 ```matlab
 % reproduce provided results
