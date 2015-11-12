@@ -4,7 +4,7 @@
 Copyright 2011-2015 Broad Institute of MIT and Harvard.
 
 A collection of software tools to read and analyze data produced from
-the L1000 project ([lincscloud.org](http://www.lincscloud.org)).
+the LINCS project ([lincsproject.org](http://lincscproject.org)).
 
 ## Analysis Tools
 
