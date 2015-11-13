@@ -136,8 +136,7 @@ R tools are found under R/cmap
 * **LXBUtil.java**: Class to read and store .lxb files.
 
 #### Demo
-* **ReadGctxExample.java**: To run the demo, change to the java/examples folder, then compile by running sh compileExamples.sh, then run by running the runExample*.sh file that alligns with your OS. 
-* 
+* **ReadGctxExample.java**: To run the demo, change to the java/examples folder, then compile by running `sh compileExamples.sh`, then run by running the `runExample*.sh` file that alligns with your OS. 
 
 ---
 ### Python Tools: python/
@@ -156,10 +155,9 @@ To run, append l1ktools/python to the `PYTHONPATH` environment variable.
 
 #### Tools
 * **cmap/io/gct.py**: Classes to interact with .gct and .gctx files.
-* **cmap/util/api_utils.py**: Classes to make calls to the LINCS annotation API and return results as Python data structures.
 
 #### Demo
-* **example_methods.py**: To run the demo, change to the folder containing example_methods.py and run the script. It will read in a .gctx file, display its contents, and write to disc.
+* **example_methods.py**: To run the demo, change to the folder containing `example_methods.py` and run the script. It will read in a .gctx file, display its contents, and write to disc.
 
 ---
 ## Common data analysis tasks
