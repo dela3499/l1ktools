@@ -4,7 +4,8 @@
 Copyright 2011-2015 Broad Institute of MIT and Harvard.
 
 A collection of software tools to read and analyze data produced from
-the LINCS project ([lincsproject.org](http://lincsproject.org)).
+the LINCS project. For more information on the project,
+including licensing, please visit ([lincsproject.org](http://lincsproject.org)).
 
 ## Analysis Tools
 
@@ -182,10 +183,3 @@ To run, append l1ktools/python to the `PYTHONPATH` environment variable.
 * **MATLAB**: To read an .lxb into the MATLAB workspace, use the `l1kt_parse_lxb` function.
 * **R**: To convert an .lxb file to text, use the `R/cmap/lxb2txt.sh` script.
 
----
-
-## Software License
-
-This software is restricted to research use only within academic, not-for-profit institutions.
-
-For licensing information see [lincscloud.org/license/](http://lincscloud.org/license/).
