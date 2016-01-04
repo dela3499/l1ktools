@@ -1,4 +1,4 @@
-# L1000 Analysis Tools v1.0
+# L1000 Analysis Tools v1.1
 
 
 Copyright 2011-2015 Broad Institute of MIT and Harvard.
@@ -23,7 +23,7 @@ for changes.
 2. Statistics Toolbox
 3. Parallel Processing Toolbox [Optional]
 
-#### Setting the MATLAB path:
+#### Setting the MATLAB path
 Run `cd l1ktools/matlab; l1kt_setup` or enter the `pathtool` command, click "Add with Subfolders...", and select the directory `l1ktools/matlab`.
 
 ### Running the standard CMap data processing pipeline
